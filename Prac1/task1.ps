@@ -1,0 +1,42 @@
+%!PS-Adobe-3.0
+
+% Define the radius and number of circles
+/radius 20 def
+/numCircles 6 def
+/mainCircleRadius 100 def
+
+% Define the center coordinates
+/centerX 300 def
+/centerY 400 def
+
+% Function to draw a circle
+/drawCircle 
+{
+  /index exch def
+  /y exch def
+  /x exch def
+
+  % Move to the starting point
+  newpath
+  x y radius 0 360 arc
+
+  % Check if this is the second circle (index is odd)
+  index 2 mod 1 eq 
+  {
+    fill
+  } 
+  {
+    % Stroke the circle with black
+    stroke
+  } ifelse
+} def
+
+% Loop to draw the circles
+0 1 numCircles 1 sub {
+  /i exch def
+  centerX i numCircles div 360 mul 90 add cos mainCircleRadius mul add
+  centerY i numCircles div 360 mul 90 add sin mainCircleRadius mul add
+  i drawCircle
+} for
+
+showpage
