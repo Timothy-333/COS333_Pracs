@@ -1,0 +1,6 @@
+#lang sicp
+(define (circleArea r)
+  (let ((pi (/ 22 7)))
+    (if (or (zero? r) (negative? r))
+        0
+        (* pi r r))))
