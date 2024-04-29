@@ -1,0 +1,12 @@
+stripNegativesAndZerosDuplicatePositives([], []).
+stripNegativesAndZerosDuplicatePositives([H|T], [H,H|L]) :-
+    H > 0,
+    stripNegativesAndZerosDuplicatePositives(T, L1).
+stripNegativesAndZerosDuplicatePositives([H|T], L) :-
+    H =< 0,
+    stripNegativesAndZerosDuplicatePositives(T, L).
+
+stripNegativesAndZerosDuplicatePositives([], X).
+stripNegativesAndZerosDuplicatePositives([0, -1, -2], X).
+stripNegativesAndZerosDuplicatePositives([2, 3, 4], X).
+ stripNegativesAndZerosDuplicatePositives([0, 2, -3, 3, 4, -5], X).
