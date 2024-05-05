@@ -11,7 +11,6 @@ WORKING-STORAGE SECTION.
 01 currentCount PIC 9(5).
 01 j PIC 9(5).
 01 maxCount PIC 9(5) VALUE 0.
-01 maxIndex PIC 9(5) VALUE 1.
 
 PROCEDURE DIVISION.
 PERFORM readData.
