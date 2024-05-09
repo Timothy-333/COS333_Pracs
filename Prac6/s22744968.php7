@@ -1,0 +1,29 @@
+<?php
+// PHP 7
+if ($argc != 3) {
+    echo "Usage: php script.php <filename> <word>\n";
+    exit(1);
+}
+
+$filename = $argv[1];
+$word = $argv[2];
+
+// Read the file
+$content = file_get_contents($filename);
+
+// Convert to lowercase and remove non-alphabetic characters
+$content = strtolower($content);
+$content = preg_replace('/[^a-z]/', '', $content);
+
+echo "<html><body>\n";
+echo "<p>Content: $content</p>\n";
+// Reverse the string
+$content = strrev($content);
+
+// Count the occurrences of the word
+$count = substr_count($content, $word);
+
+// Generate HTML output
+echo "<p>Matches: $count</p>\n";
+echo "</body></html>\n";
+?>
