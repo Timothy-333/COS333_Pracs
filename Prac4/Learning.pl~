@@ -45,4 +45,27 @@ getPositiveValues([H|T], [H|L2]) :-
 
 sumNonNegativeValues([],0).
 sumNonNegativeValues([_],0).
-sumNonNegativeValues(L, X)
+sumNonNegativeValues([H|T], X) :-
+    H >= 0,
+    sumNonNegativeValues(T, Rest),
+    X is H + Rest.
+sumNonNegativeValues([H|T], X) :-
+    H < 0,
+    sumNonNegativeValues(T, X).
+
+stripOccurrences(_, [], []).
+stripOccurrences(X, [H|T], L2) :-
+    X = H,
+    stripOccurrences(X, T, L2).
+stripOccurrences(X, [H|T], [H|L2]) :-
+    not(X = H),
+    stripOccurrences(X, T, L2).
+
+doubleNonMatching([], _, []).
+doubleNonMatching([H|T], X, [H,H|L2]) :-
+    X = H,
+    doubleNonMatching(T, X, L2).
+doubleNonMatching([H|T], X, [H|L2]) :-
+    not(X = H),
+    doubleNonMatching(T, X, L2).
+
